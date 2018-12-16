@@ -1,0 +1,87 @@
+//variables
+$blue : #2299cc;
+$picture: url(https://fillmurray.com/500/500);
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, sans-serif;
+}
+
+.allSections {
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  padding: 20px;
+  background: $picture;
+  cursor: pointer;
+  transition: all .5s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.active {
+    flex: 5;
+    background: orange;
+    cursor: default;
+
+    h2 {
+      color: $blue;
+    }
+
+    .section-content {
+      flex: 5;
+      opacity: 1;
+      transform: scaleX(1);
+      color: $blue;
+    }
+  }
+
+  .section-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+
+    h2 {
+      margin: 0;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+    }
+  }
+
+  .section-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: all .25s .1s ease-out;
+  }
+}  //end of .item
+
+
+li{
+  list-style-type: none;
+  padding:0;
+}

@@ -1,0 +1,227 @@
+//EXERCISE 1
+
+//variables
+$mainImageTextColour: #ffffff;
+$boxFontColour: #e4e6e6;
+
+//mixins
+
+
+// global
+body{
+  margin: 0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  background-color: #e8e8e8;
+}
+
+.container{
+  width:65%;
+  margin: auto;
+  overflow: hidden;
+}
+
+#entire{
+
+  margin-top: 10%;
+  border: 1.2px black solid;
+  padding-top:2px;
+  padding-bottom: 30px;
+  background-color: white;
+}
+
+
+// top header
+#mainImage{
+  position: relative;
+  img{
+    width:100%;
+    filter: brightness(65%);
+  }
+  #mainImageText{
+    position: absolute;
+    top: 41%;
+    width:65%;
+    text-align: center;
+    color: $mainImageTextColour;
+  }
+  h1{
+    font-size: 3.1vw;
+    font-weight: normal;
+    margin:0;
+  }
+  h3{
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-top: 3px;
+    font-size: 1.2vw;
+  }
+
+}  //end #mainImage
+
+
+
+//boxes
+
+#boxes{
+  margin-top: 40px;
+
+  #boxGroup{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    width:65%;
+    margin: auto;
+  }
+  .box{
+    position:relative;
+    text-align: center;
+    border: 1px $boxFontColour solid;
+    margin: 0.8vw;
+    padding: 0 7px 50px 7px;
+    border-radius: 5px;
+  }
+  #box1{
+    grid-column-start: 2;
+  }
+  img{
+    margin-top: 0.8vw;
+    width:100%;
+    border-radius: 5px;
+  }
+  p{
+    font-size: 0.9vw;
+    color: #989ba0;
+    line-height: 1.4;
+  }
+  button{
+    position: absolute;
+    bottom:2%;
+    left: 20%;
+    border-radius: 25px;
+    padding: 7px 20px;
+    font-weight: bold;
+    border: 2px solid black;
+    font-size: 0.7vw;
+
+  }
+}
+#mobileBanner{
+  display: none;
+}
+
+
+
+// media queries
+@media screen and (max-width: 768px){
+  #mainImage{
+    h1{
+      font-size: 9vw;
+    }
+    h3{
+      font-size: 3.7vw;
+    }
+  }
+
+  #mobileBanner{
+    display: block;
+  }
+  #desktopBanner{
+    display: none;
+  }
+
+  #boxes{
+    #boxGroup{
+      display: block;
+    }
+    .box{
+      width: 80%;
+      margin: auto;
+      margin-bottom: 5%;
+      padding: 11px 11px 50px 11px;
+    }
+    p{
+      font-size: 2vw;
+    }
+    button{
+      left: 32%;
+      font-size: 2vw;
+    }
+  }
+}
+
+
+// EXERCISE 2
+
+//variables
+$blue1 : #045B96;
+
+
+#accordion{
+  box-sizing: border-box;
+}
+
+#allSections{
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  list-style-type: none;
+
+  li{
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    padding: 20px;
+    background: $blue1;
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+    &:hover{       //& === parent, ie li:hover
+      background: darken($blue1, 3);
+    }
+
+    &:active{
+      flex: 5;
+      background: orange;
+      cursor: default;
+
+      h2{
+        color: purple;
+      }
+
+      .section-content{
+        flex:4;
+        opacity: 1;
+        transform: scaleX(1);
+        color: purple
+      }
+    }  //end &:active
+
+    .section-title{
+      flex:1;
+      display: flex;
+      align-items: center;
+      width:100%;
+      text-align: center;
+      margin: 0;
+      padding:0;
+      color: white;
+
+      h2{
+        margin:0;
+        transform: rotate(-90deg);
+        white-space: nowrap;
+      }
+    }  //end .section-title
+
+    .section-content{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin:0;
+      padding:0;
+      opacity: 0;
+      transition: all 0.25s 0.1s ease-out;
+    }
+  }
+}
